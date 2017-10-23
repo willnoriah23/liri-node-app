@@ -11,10 +11,8 @@ var dataFile = "random.txt";
 
 if (nodeArg === "my-tweets") {
 	myTweets();
-}
-
-
-if (nodeArg === "spotify-this-song") { 
+} 
+else if (nodeArg === "spotify-this-song") { 
 	var song = "";
         for (var i = 3; i < process.argv.length; i++) {
             song = song + process.argv[i] + " ";
@@ -25,11 +23,9 @@ if (nodeArg === "spotify-this-song") {
             song = song.trim();
         }
 
-	spotifySongs(songs);
+	spotifySongs(song);
 }
-
-
-if (nodeArg === "movie-this") {
+else if (nodeArg === "movie-this") {
 	var movie = "";
 		    for (var i = 3; i < process.argv.length; i++) {
             movie = movie + process.argv[i] + " ";
@@ -41,8 +37,7 @@ if (nodeArg === "movie-this") {
         }
 	pullMovies(movie);
 }
-
-if (nodeArg === "do-what-it-says") {
+else if (nodeArg === "do-what-it-says") {
 fs.readFile(dataFile, "utf8", function(error, data) {
 
 	if (error) {
@@ -64,6 +59,8 @@ fs.readFile(dataFile, "utf8", function(error, data) {
   	}
 
 	});
+} else {
+  console.log("Invalid command");
 }
 
 function myTweets() {
@@ -78,7 +75,6 @@ function myTweets() {
 }
 
 function spotifySongs(song) {
-		
 	      	  
 spotify.search({ type: 'track', query: song }, function(err, data) {
   if (err) {
