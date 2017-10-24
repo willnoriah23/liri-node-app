@@ -63,8 +63,11 @@ fs.readFile(dataFile, "utf8", function(error, data) {
   console.log("Invalid command");
 }
 
+
+
+
 function myTweets() {
-		var params = {screen_name: 'sosodev_riah'};
+	var params = {screen_name: 'noriaaahj'};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	if (!error) {
 	for (var i = 0; i < tweets.length; i++){
@@ -87,6 +90,7 @@ spotify.search({ type: 'track', query: song }, function(err, data) {
 
 function pullMovies(movie) {
     // Make request URL just like ajax call    
+    movie = movie.replace('"', "");
    	request("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece", function(error, response, body) {
 
         if (!error && response.statusCode === 200) {
